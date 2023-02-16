@@ -1,0 +1,4 @@
+name = "DataPlates"
+uuid = "59ae4a78-68cb-4330-bbcf-b7cb3dbc2ded"
+authors = ["Thomas Poulsen <ta.poulsen@gmail.com>"]
+version = "0.1.0"
