@@ -54,6 +54,8 @@ end
 * DataPlate("Plate1", "UP0001234"): 96 well plate with name: "Plate1", barcode: "UP0001234" and one value with one value: "well_96" with values "A01", "B01", ....
 * Do not allow "well", "platename", "barcode" as a column names. These are reserved.
 * 6-well plates only have a single "quadrant" [1]
+* values!(p::DataPlate, colname::String, values::Vector{T}): add a column
+* DataPlate(;col1 = values1, col2 = values2, ...) plate with columns
 
 ## Methods
 
@@ -115,3 +117,40 @@ However, it does not scale to 1536, where we have wells:  A01, ..., Z48, AA01, .
 We will consider 1536, when we get there.
 
 The advantage of A01 wins for now.
+
+# Examples
+
+This is going into docs.
+
+julia> wells(6)
+6-element Vector{String}:
+ "A01"
+ "B01"
+ "A02"
+ "B02"
+ "A03"
+ "B03"
+
+julia> sort(wells(6))
+6-element Vector{String}:
+ "A01"
+ "A02"
+ "A03"
+ "B01"
+ "B02"
+ "B03"
+
+julia> DataFrame(DataPlate("Plate1",6))
+6×4 DataFrame
+ Row │ platename  barcode  well    well006
+     │ String     String   String  String
+─────┼─────────────────────────────────────
+   1 │ Plate1     Plate1   A01     A01
+   2 │ Plate1     Plate1   B01     B01
+   3 │ Plate1     Plate1   A02     A02
+   4 │ Plate1     Plate1   B02     B02
+   5 │ Plate1     Plate1   A03     A03
+   6 │ Plate1     Plate1   B03     B03
+
+TODO:
+julia> DataFrame(DataPlate("Plate1",6; activity = [1,2,3,4,5,6]))

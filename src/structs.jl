@@ -19,17 +19,18 @@ end
 StructEquality.@struct_hash_equal DataPlate
 
 
-function DataPlate(platename::String,barcode::String) ## [:name => value]
+function DataPlate(platename::String,barcode::String, geometry::Int=96) ## [:name => value]
+    q_pat = geometry > 6 ? [2,1,3,4] : [1] ## 6-well plates do not have quadrants
     DataPlate(
               platename,
               barcode,
-              96,
-              [2,1,3,4],
-              [WellValues("well096", wells(96))]
+              geometry,
+              q_pat,
+              [WellValues("well"*lpad(geometry,3,"0"), wells(geometry))]
               )
 end
 
-DataPlate(platename::String) = DataPlate(platename, platename)
+DataPlate(platename::String, geometry::Int=96) = DataPlate(platename, platename, geometry)
 
 """
     MTP.LETTERS is just the vector ["A", "B", ..., "Z"] as in R
