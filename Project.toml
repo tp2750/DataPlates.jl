@@ -2,3 +2,15 @@ name = "DataPlates"
 uuid = "59ae4a78-68cb-4330-bbcf-b7cb3dbc2ded"
 authors = ["Thomas Poulsen <ta.poulsen@gmail.com>"]
 version = "0.1.0"
+
+[deps]
+StructEquality = "6ec83bb0-ed9f-11e9-3b4c-2b04cb4e219c"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
