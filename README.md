@@ -14,7 +14,8 @@ Not much done yet:
 
 * [X] struct DataPlate
 * [X] function to generate wells: A01, A02, ....
-* [ ]
+* [ ] Only depend on Tables rather than DataFrames
+* [ ] Document constructor and conversion to DataFrame
 
 ## Structs
 ``` julia
@@ -51,6 +52,8 @@ end
 
 * DataPlate("Plate1"): 96 well plate with name "Plate1", same as barcode one value: "well_96" with values "A01", "B01", ....
 * DataPlate("Plate1", "UP0001234"): 96 well plate with name: "Plate1", barcode: "UP0001234" and one value with one value: "well_96" with values "A01", "B01", ....
+* Do not allow "well", "platename", "barcode" as a column names. These are reserved.
+* 6-well plates only have a single "quadrant" [1]
 
 ## Methods
 

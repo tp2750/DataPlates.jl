@@ -12,6 +12,7 @@ struct DataPlate
     values::Vector{WellValues}
     # function DataPlate(name, barcode, quadrant_pattern, values)
     #     @assert all(geometry .== length.(values))
+    #     @assert all([x.name for x in values] .!= "well") ## well as reserved column name
     #     new(name, barcode, quadrant_pattern, values)
     # end
 end
