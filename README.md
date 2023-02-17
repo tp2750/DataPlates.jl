@@ -2,12 +2,19 @@
 
 Julia Package for working with data on SBS or microtiter (MTP) plates.
 
-Similar use case as https://github.com/ropensci/plater.
+This is a rewrite of [MTP.jl](https://github.com/tp2750/MTP.jl) which was never registered.
+
+Similar use-cases in R:  https://github.com/ropensci/plater, https://github.com/jpquast/ggplate
 
 # Draft
 
 Below are implementation thoughts.
-No code yet.
+
+Not much done yet:
+
+* [X] struct DataPlate
+* [X] function to generate wells: A01, A02, ....
+* [ ]
 
 ## Structs
 ``` julia
@@ -24,10 +31,10 @@ Assert that all value-vectors have length == geometry.
 ``` julia
 struct WellValues{T} T
     name::String ## the "column name"
-    values::Vector{T} ## Well values are always stored row-wise,
+    values::Vector{T} ## Well values are always stored column-wise
 end
 ```
-Well values are always stored row-wise.
+Well values are always stored column-wise. Re-sort on well to get them row-wise
 T can be numeric or String.
 T can itself be a vector, so this can also hold time-series as reader-curves.
 But we probably want to keep this use case separate.
@@ -40,6 +47,10 @@ end
 ```
 
 
+## Constructors
+
+* DataPlate("Plate1"): 96 well plate with name "Plate1", same as barcode one value: "well_96" with values "A01", "B01", ....
+* DataPlate("Plate1", "UP0001234"): 96 well plate with name: "Plate1", barcode: "UP0001234" and one value with one value: "well_96" with values "A01", "B01", ....
 
 ## Methods
 
@@ -81,3 +92,23 @@ When the data is converted to DataFrame is looks like this:
 | ...           |            |          |      |      |
 
 If the input data is sparse (not all wells have values), the DataFrame can be sparse as well (only wells with values) or full depending on a kw parameter.
+
+# Design considerations
+
+## well order
+
+* Do we want a fixed well order?
+
+It makes everything easier, if we just decide on an order.
+If we sort by column as default (A01, B01, ...) it is easy to resort to row-wise (A01, A02, ...)
+
+## well names
+
+* Do we want well names as "A01" or "A1"?
+
+The "A01" is nice as it sorts in data frames and spread sheets.
+However, it does not scale to 1536, where we have wells:  A01, ..., Z48, AA01, ..., AF48
+
+We will consider 1536, when we get there.
+
+The advantage of A01 wins for now.
