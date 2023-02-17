@@ -152,5 +152,10 @@ julia> DataFrame(DataPlate("Plate1",6))
    5 │ Plate1     Plate1   A03     A03
    6 │ Plate1     Plate1   B03     B03
 
+StructEquality gives us:
+
+julia> DataPlate("Plate1") == DataPlate("Plate1", "Plate1")
+julia> DataPlate("Plate1") == DataPlate("Plate1", "Plate1", 96)
+
 TODO:
 julia> DataFrame(DataPlate("Plate1",6; activity = [1,2,3,4,5,6]))
