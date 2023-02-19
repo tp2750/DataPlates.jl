@@ -4,7 +4,7 @@
     Generate `count` barcodes each with maximal number of characters `width`
 
 """
-function barcodes(prefix::String, width::Int; count = 1, sep="")
+function barcodes(width::Int; count = 1, prefix="", sep="")
     now_epoch = string(now().instant.periods.value)[1:end-3] ## value is ms
     count_digits = length(digits(count))
     N = length(prefix) + length(sep) + count_digits
