@@ -1,5 +1,6 @@
 module DataPlates
 using StructEquality
+using Dates
 
 include("structs.jl")
 export DataPlate
@@ -9,5 +10,8 @@ export wells
 
 include("methods.jl")
 export DataFrame
+
+include("barcodes.jl")
+export barcodes
 
 end # module DataPlates
