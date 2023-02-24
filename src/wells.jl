@@ -34,7 +34,7 @@ end
     wellname(w::string)
     Adds zero-padding to well names: wellname("B3" == "B03"
 """
-wellname(w::String) = @sprintf("%s%.2d", row(w),col(w))
+wellname(w::String) = row(w)*lpad(col(w),2,"0")
 row(w::Missing) = missing
 col(w::Missing) = missing
 wellname(w::Missing) = missing
