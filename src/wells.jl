@@ -25,7 +25,6 @@ end
     row("B03") == "B", col("B03") == 3    
 """
 row(w::String) = string(w[1]) # TODO does not work for 1536
-col(w::String) = parse(Int, w[2:end]) # TODO does not work for 1536
 function col(w::String)
     m = match(r"\d+$", w)
     parse(Int, m.match)

@@ -4,4 +4,5 @@
     @test wellname("B3") == "B03"
     @test row("B03") == "B"
     @test col("B03") == 3
+    @test all([ismissing(row(missing)), ismissing(col(missing)), ismissing(wellname(missing))])
 end
