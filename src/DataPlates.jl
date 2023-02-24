@@ -1,7 +1,6 @@
 module DataPlates
 using StructEquality
 using Dates
-using Printf
 
 include("structs.jl")
 export DataPlate
