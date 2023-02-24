@@ -9,3 +9,4 @@ function DataFrame(p::DataPlate)
     end
     df
 end
+DataFrame(ps::Vector{DataPlate}) = reduce(vcat, [DataFrame(p) for p in ps])

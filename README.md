@@ -24,7 +24,7 @@ Not much done yet:
 * [X] struct DataPlate
 * [X] function to generate wells: A01, A02, ....
 * [ ] Only depend on Tables rather than DataFrames
-* [ ] Document constructor and conversion to DataFrame
+* [ ] Document constructor and conversion to DataFramen
 
 ## Structs
 ``` julia

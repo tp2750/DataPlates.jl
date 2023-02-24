@@ -2,7 +2,7 @@
 
 julia_version = "1.8.3"
 manifest_format = "2.0"
-project_hash = "f9d7628ea69aea13f2ca163e9dd4696b9764f90c"
+project_hash = "d4051ccb5f54e5b5a5400b927036e3999ed0452f"
 
 [[deps.ANSIColoredPrinters]]
 git-tree-sha1 = "574baf8110975760d391c710b6341da1afa48d8c"
@@ -43,9 +43,11 @@ uuid = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 version = "1.5.0"
 
 [[deps.DataPlates]]
-deps = ["DataFrames", "Dates", "Printf", "StructEquality"]
-path = ".."
-uuid = "a9bb76b8-60c9-4aae-a595-a7186180df10"
+deps = ["DataFrames", "Dates", "StructEquality"]
+git-tree-sha1 = "47e3ba70ad09f9ca53b501844ab428b471dda2c2"
+repo-rev = "main"
+repo-url = ".."
+uuid = "59ae4a78-68cb-4330-bbcf-b7cb3dbc2ded"
 version = "0.1.0"
 
 [[deps.DataStructures]]

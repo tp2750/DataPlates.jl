@@ -18,7 +18,15 @@ struct DataPlate
 end
 StructEquality.@struct_hash_equal DataPlate
 
+"""
+    DataPlate(platename::String,barcode::String, geometry::Int=96)
+    generate a DataPlate with given name, barcode and geometry.
 
+    platename: name of plate. To make more plates: broadcast over a vector of plate names.
+    barcode: barcode on plate. Defaults to platename. 
+    geometry: number of wells on plate
+     
+"""
 function DataPlate(platename::String,barcode::String, geometry::Int=96) ## [:name => value]
     q_pat = geometry > 6 ? [2,1,3,4] : [1] ## 6-well plates do not have quadrants
     DataPlate(
