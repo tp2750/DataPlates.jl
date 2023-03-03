@@ -81,7 +81,7 @@ julia> DataFrame(DataPlate.(["P1", "P2"], ["A", "B"],6))
 
 ## Printing in plate format
 
-The `Base.print` and `Base.show` methods is overloaded to show the first column, that is not "platename", "barcode" or "well":
+The `Base.print` and `Base.show` methods is overloaded to show the last column.
 
 ```
 julia> DataPlate("P1")
@@ -152,6 +152,22 @@ To see the actual data structure, use `dump` or `Base.show_default`:
 julia> Base.show_default(stdout,DataPlate("P1", 6))
 DataPlate("P1", "P1", 6, [1], DataPlates.WellValues[DataPlates.WellValues{String}("well006", ["A01", "B01", "A02", "B02", "A03", "B03"])])
 
+```
+
+## Adding Values
+
+Values are added as extra keyword arguments.
+The length must match the geometry.
+
+``` julia
+julia> DataPlate("P1",6, activity=collect(1:6))
+[ Info: dispcol: activity
+2×6 DataFrame
+ Row │ platename  barcode  row     1       2       3      
+     │ String     String   String  Int64?  Int64?  Int64? 
+─────┼────────────────────────────────────────────────────
+   1 │ P1         P1       A            1       3       5
+   2 │ P1         P1       B            2       4       6
 ```
 
 
