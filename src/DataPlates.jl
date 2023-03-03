@@ -11,6 +11,7 @@ export row, col, wellname
 
 include("methods.jl")
 export DataFrame
+export print, show, pp
 
 include("barcodes.jl")
 export barcodes
