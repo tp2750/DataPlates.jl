@@ -8,6 +8,7 @@ export DataPlate
 include("wells.jl")
 export wells
 export row, col, wellname
+export reorder_wells
 
 include("methods.jl")
 export DataFrame
