@@ -1,12 +1,14 @@
 struct WellValues{T}
     name::String ## the "column name"
     values::Vector{T} ## Well values are always stored row-wise,
-    well_direction::String ## always "|"
-    function WellValues(name::String, values::Vector{T}, well_direction::String)
-        if any(startswith.(well_direction, ["|",r"A0?1,? ?B0?1","col"]))
-            return(new(name, values, "|"))
-        end
-    end
+    # well_direction::String ## always "|".
+    ## To do this See src/test.jl and https://docs.julialang.org/en/v1/manual/constructors/#Parametric-Constructors
+    # function WellValues(name::String, values::Vector{T}, well_direction::String)
+    #     if any(startswith.(well_direction, ["|",r"A0?1,? ?B0?1","col"]))
+    #         return(new(name, values, "|"))
+    #     end
+    #     return(new(name, reorder_wells(values), "|"))
+    # end
 end
 StructEquality.@struct_hash_equal WellValues
 
@@ -17,11 +19,11 @@ struct DataPlate
     geometry::Int
     quadrant_pattern::Vector{Int}
     values::Vector{WellValues}
-    # function DataPlate(name, barcode, quadrant_pattern, values)
-    #     @assert all(geometry .== length.(values))
-    #     @assert all([x.name for x in values] .!= "well") ## well as reserved column name
-    #     new(name, barcode, quadrant_pattern, values)
-    # end
+    function DataPlate(name, barcode, geometry, quadrant_pattern, values)
+        @assert all(geometry .== [length(x.values) for x in values])
+        @assert all([x.name for x in values] .!= "well") ## well as reserved column name
+        new(name, barcode, geometry, quadrant_pattern, values)
+    end
 end
 StructEquality.@struct_hash_equal DataPlate
 
