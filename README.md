@@ -168,3 +168,8 @@ julia> DataPlate("Plate1") == DataPlate("Plate1", "Plate1", 96)
 
 TODO:
 julia> DataFrame(DataPlate("Plate1",6; activity = [1,2,3,4,5,6]))
+
+* DataPlate should be mutable
+* push!(::DataPlate, ::WellValues) should work and add data.
+* Remember the ordering: "|"
+
