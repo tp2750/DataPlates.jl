@@ -1,8 +1,15 @@
 struct WellValues{T}
     name::String ## the "column name"
     values::Vector{T} ## Well values are always stored row-wise,
+    well_direction::String ## always "|"
+    function WellValues(name::String, values::Vector{T}, well_direction::String)
+        if any(startswith.(well_direction, ["|",r"A0?1,? ?B0?1","col"]))
+            return(new(name, values, "|"))
+        end
+    end
 end
 StructEquality.@struct_hash_equal WellValues
+
 
 struct DataPlate
     name::String
@@ -69,6 +76,6 @@ DataPlate(platename::String, geometry::Int=96;kwargs...) = DataPlate(platename, 
 
 
 """
-    MTP.LETTERS is just the vector ["A", "B", ..., "Z"] as in R
+    DataPlates.LETTERS is just the vector ["A", "B", ..., "Z"] as in R
 """
 const LETTERS = string.(collect('A':'Z'))
