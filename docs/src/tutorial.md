@@ -191,3 +191,10 @@ julia> reshape(reorder_wells(1:24),(4,6))
  19  20  21  22  23  24
 
 ```
+
+# Reading data from Excel file
+
+```
+DataFrame.(data_plates("plateset_1.xlsx"))
+```
+

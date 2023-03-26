@@ -1,6 +1,7 @@
 module DataPlates
 using StructEquality
 using Dates
+using XLSX
 
 include("structs.jl")
 export DataPlate
@@ -16,5 +17,8 @@ export print, show, pp
 
 include("barcodes.jl")
 export barcodes
+
+include("excel.jl")
+export data_plates
 
 end # module DataPlates
