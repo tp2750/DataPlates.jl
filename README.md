@@ -5,8 +5,9 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://tp2750.github.io/DataPlates.jl/dev/)
 [![Build Status](https://github.com/tp2750/DataPlates.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/tp2750/DataPlates.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Coverage](https://codecov.io/gh/tp2750/DataPlates.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/tp2750/DataPlates.jl)
+<!---
 [![PkgEval](https://JuliaCI.github.io/NanosoldierReports/pkgeval_badges/D/DataPlates.svg)](https://JuliaCI.github.io/NanosoldierReports/pkgeval_badges/report.html)
-
+--->
 
 
 Julia Package for working with data on SBS or microtiter (MTP) plates.
@@ -131,6 +132,7 @@ The advantage of A01 wins for now.
 
 This is going into docs.
 
+```
 julia> wells(6)
 6-element Vector{String}:
  "A01"
@@ -160,14 +162,20 @@ julia> DataFrame(DataPlate("Plate1",6))
    4 │ Plate1     Plate1   B02     B02
    5 │ Plate1     Plate1   A03     A03
    6 │ Plate1     Plate1   B03     B03
+```
 
 StructEquality gives us:
 
+```
 julia> DataPlate("Plate1") == DataPlate("Plate1", "Plate1")
 julia> DataPlate("Plate1") == DataPlate("Plate1", "Plate1", 96)
+```
 
 TODO:
+
+```
 julia> DataFrame(DataPlate("Plate1",6; activity = [1,2,3,4,5,6]))
+```
 
 * DataPlate should be mutable
 * push!(::DataPlate, ::WellValues) should work and add data.
