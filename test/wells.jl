@@ -5,4 +5,5 @@
     @test row("B03") == "B"
     @test col("B03") == 3
     @test all([ismissing(row(missing)), ismissing(col(missing)), ismissing(wellname(missing))])
+    @test reorder_wells(6) == [1,4,2,5,3,6]
 end
