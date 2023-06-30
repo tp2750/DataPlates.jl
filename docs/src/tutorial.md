@@ -170,4 +170,31 @@ julia> DataPlate("P1",6, activity=collect(1:6))
    2 │ P1         P1       B            2       4       6
 ```
 
+## Reordering wells
+
+Well values are stored column-major as julia does with matrices.
+The function `reorder_wells` is used to re-sort a vector of values from column-major to row-major:
+
+```
+julia> reshape(1:24,(4,6))
+4×6 reshape(::UnitRange{Int64}, 4, 6) with eltype Int64:
+ 1  5   9  13  17  21
+ 2  6  10  14  18  22
+ 3  7  11  15  19  23
+ 4  8  12  16  20  24
+
+julia> reshape(reorder_wells(1:24),(4,6))
+4×6 reshape(transpose(reshape(::UnitRange{Int64}, 6, 4)), 4, 6) with eltype Int64:
+  1   2   3   4   5   6
+  7   8   9  10  11  12
+ 13  14  15  16  17  18
+ 19  20  21  22  23  24
+
+```
+
+# Reading data from Excel file
+
+```
+DataFrame.(data_plates("plateset_1.xlsx"))
+```
 
